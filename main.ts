@@ -9,6 +9,10 @@ if (!ENTRY || ENTRY.trim().length === 0) {
   throw new Error("Entry line must not be empty.");
 }
 
+if (ENTRY.includes("\n") || ENTRY.includes("\r")) {
+  throw new Error("Entry line must be a single line without newline characters.");
+}
+
 if (ENTRY.length > 120) {
   throw new Error(
     `Entry line must be at most 120 characters, got ${ENTRY.length}.`,
